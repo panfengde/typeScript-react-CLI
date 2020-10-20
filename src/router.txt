@@ -1,0 +1,37 @@
+/* 结合了redux */
+import React from 'react';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Route, hashHistory, Link, Redirect, IndexRoute, Switch } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import reducers from './reducers';
+import routerconfig from './routerConfig';
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    routing: routerReducer,
+  })
+);
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(hashHistory, store);
+
+function createChildRoute(array) {
+  return array.map((childObj, i) => <Route
+    exact={true}
+    key={i}
+    path={childObj.path}
+    component={childObj.component}
+  >
+    {childObj.child && createChildRoute(childObj.child)}
+  </Route>);
+}
+
+const App = () =>
+  <Provider store={store}>
+    <Router history={history}>
+      {createChildRoute(routerconfig)}
+    </Router>
+  </Provider>
+;
+export default App;
