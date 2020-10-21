@@ -17,16 +17,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "noImplicitThis": false //true时，this不能用，我关掉了
   },
   "include": [
     "src"
   ],
-  "baseUrl": ".",
+  "baseUrl": "src",
   "module": "commonjs",
   "paths": {
-    "@/*": [
-      "./src/*"
-    ]
-  }
+    //这里不生效，我直接修改webpack.config.js的alias
+  },
+  "extends": "./paths.json"
 }

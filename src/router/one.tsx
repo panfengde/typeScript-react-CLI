@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from "react-redux";
 
+import Hello from "components/Hello/index";
+
 interface Props {
     cName: string,
     cAge: number,
@@ -35,6 +37,7 @@ class One extends Component<Props, ComponentState> {
                 <div>hello one</div>
                 <div>state.name---{this.state.go}</div>
                 <div>props.name---{this.props.cName}</div>
+                <Hello />
             </div>
 
         )
