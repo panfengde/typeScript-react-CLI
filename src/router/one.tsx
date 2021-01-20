@@ -7,7 +7,8 @@ import Hello from "components/Hello/index";
 interface Props {
     cName: string,
     cAge: number,
-    changeName?: any
+    changeName?: any,
+    title: string
 }
 
 interface State {
@@ -35,11 +36,11 @@ class One extends Component<Props, ComponentState> {
         return (
             <div>
                 <div>hello one</div>
+                <div>{this.props.title}</div>
                 <div>state.name---{this.state.go}</div>
                 <div>props.name---{this.props.cName}</div>
                 <Hello />
             </div>
-
         )
     }
 

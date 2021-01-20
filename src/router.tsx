@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import store from './reducer';
 
 
-import One from './router/one';
+import Hello from './router/gogo';
 import Two from './router/two';
 
 
@@ -25,7 +25,7 @@ const App = () => {
                 <HashRouter>
                     <Switch  >
                         <Route exact={true} path="/" render={() => "typeScript+react+react-router-dom+redux+antd"} />
-                        <Route exact={true} path="/one" component={One} />
+                        <Route exact={true} path="/one" component={Hello} />
                         <Route exact={true} path="/two" component={Two} />
                     </Switch>
                 </HashRouter>
